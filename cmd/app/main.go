@@ -2,32 +2,26 @@ package main
 
 import (
 	"fmt"
+	"github.com/juankair/go_api_boilerplate/pkg/log"
 	"net/http"
+	"os"
 
-	"github.com/sirupsen/logrus"
 	"github.com/uptrace/bunrouter"
 )
 
-var log = logrus.New()
-
 func main() {
 	router := bunrouter.New()
+	logger := log.New()
 
 	router.GET("/", func(w http.ResponseWriter, req bunrouter.Request) error {
 		fmt.Println(req.Method, req.Route(), req.Params().Map())
 		return nil
 	})
 
-	log.WithFields(logrus.Fields{
-		"param":  1231,
-		"param2": "data",
-	}).Info("This is log info")
-	log.WithFields(logrus.Fields{
-		"paramDebug":  1231,
-		"paramDebug2": "data",
-	}).Debug("This is log DEBUG")
-	log.Warn("This is log warning")
-	log.Error("This is log error")
-	http.ListenAndServe(":8181", router)
+	logger.Info("Server Is Running At https://localhost:8181")
+	if err := http.ListenAndServe(":8181", router); err != nil && err != http.ErrServerClosed {
+		logger.Error(err)
+		os.Exit(-1)
+	}
 
 }
