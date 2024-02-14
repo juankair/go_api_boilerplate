@@ -3,10 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/juankair/go_api_boilerplate/internal/config"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
 	"net/http"
 	"os"
+	"strconv"
+
+	"github.com/juankair/go_api_boilerplate/internal/config"
+	"github.com/juankair/go_api_boilerplate/pkg/log"
 
 	"github.com/uptrace/bunrouter"
 )
@@ -20,7 +22,7 @@ func main() {
 
 	cfg, err := config.Load(*flagConfig, logger)
 	if err != nil {
-		logger.Errorf("failed to load application configuration: %s", err)
+		logger.Error("failed to load application configuration: %s", err)
 		os.Exit(-1)
 	}
 
@@ -30,7 +32,7 @@ func main() {
 		Handler: buildHandler(logger),
 	}
 
-	logger.Info("Server Is Running At https://localhost:8181")
+	logger.Info(fmt.Sprintf("Server Is Running At https://localhost:%s", strconv.Itoa(cfg.ServerPort)))
 	if err := configServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		logger.Error(err)
 		os.Exit(-1)
