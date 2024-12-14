@@ -1,18 +1,20 @@
 package config
 
 import (
-	"github.com/juankair/go_api_boilerplate/pkg/log"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
 
 const (
+	defaultHostFrontend       = "http://localhost:3000/"
 	defaultServerPort         = 8080
 	defaultJWTExpirationHours = 72
 )
 
 type Config struct {
 	ServerPort int `yaml:"server_port" env:"SERVER_PORT"`
+
+	HostFrontend string `yaml:"host_frontend" env:"HOST_FRONTEND"`
 
 	DSN string `yaml:"dsn" env:"DSN,secret"`
 
@@ -21,7 +23,7 @@ type Config struct {
 	JWTExpiration int `yaml:"jwt_expiration" env:"JWT_EXPIRATION"`
 }
 
-func Load(file string, logger log.Logger) (*Config, error) {
+func Load(file string) (*Config, error) {
 	c := Config{
 		ServerPort:    defaultServerPort,
 		JWTExpiration: defaultJWTExpirationHours,
@@ -34,10 +36,6 @@ func Load(file string, logger log.Logger) (*Config, error) {
 	if err = yaml.Unmarshal(bytes, &c); err != nil {
 		return nil, err
 	}
-
-	//if err = env.New("APP_", logger.Infof).Load(&c); err != nil {
-	//	return nil, err
-	//}
 
 	return &c, err
 }

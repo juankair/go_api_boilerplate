@@ -1,1 +1,4 @@
 ServerPort: "8000"
+host_frontend : "http://localhost:3000"
+dsn: "root:sangkala75@tcp(localhost:3306)/testdb"
+jwt_signing_key: "LxsKJywDL5O5PvgODZhBH12KE6k2yL8E"

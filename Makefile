@@ -8,3 +8,17 @@ help: ## help information about make commands
 .PHONY: run
 run: ## start running API
 	go run cmd/app/main.go
+
+.PHONY: migrate-new
+migrate-new:
+	@read -p "Enter the name of the new migration: " name; \
+	$(MIGRATE) create -ext sql -dir migrations/ $${name// /_}
+
+.PHONY: migrate-up
+migrate-up:
+	$(MIGRATE) -path=migrations/ -database "mysql://$(MYSQL_USERNAME):$(MYSQL_PASSWORD)@tcp($(MYSQL_HOST):$(MYSQL_PORT))/$(MYSQL_DATABASE_NAME)" up
+
+
+.PHONY: migrate-down
+migrate-down:
+	$(MIGRATE) -path=migrations/ -database "mysql://$(MYSQL_USERNAME):$(MYSQL_PASSWORD)@tcp($(MYSQL_HOST):$(MYSQL_PORT))/$(MYSQL_DATABASE_NAME)" down
