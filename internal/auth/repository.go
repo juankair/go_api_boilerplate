@@ -2,11 +2,12 @@ package auth
 
 import (
 	"context"
+
 	dbx "github.com/go-ozzo/ozzo-dbx"
 	"github.com/google/uuid"
-	"github.com/juankair/go_api_boilerplate/internal/entity"
-	"github.com/juankair/go_api_boilerplate/pkg/dbcontext"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
+	"github.com/juankair/docs_sign_be/internal/entity"
+	"github.com/juankair/docs_sign_be/pkg/dbcontext"
+	"github.com/juankair/docs_sign_be/pkg/log"
 )
 
 type Repository interface {

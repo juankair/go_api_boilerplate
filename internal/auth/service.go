@@ -4,11 +4,12 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/juankair/go_api_boilerplate/internal/entity"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
-	"golang.org/x/crypto/bcrypt"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/juankair/docs_sign_be/internal/entity"
+	"github.com/juankair/docs_sign_be/pkg/log"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Service interface {

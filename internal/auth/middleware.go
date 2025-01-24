@@ -2,11 +2,12 @@ package auth
 
 import (
 	"context"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/juankair/go_api_boilerplate/pkg/response"
-	"github.com/uptrace/bunrouter"
 	"net/http"
 	"strings"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/juankair/docs_sign_be/pkg/response"
+	"github.com/uptrace/bunrouter"
 )
 
 func SecureMiddleware(jwtKey string) bunrouter.MiddlewareFunc {

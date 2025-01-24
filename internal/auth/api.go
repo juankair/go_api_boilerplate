@@ -3,11 +3,12 @@ package auth
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
-	"github.com/juankair/go_api_boilerplate/pkg/response"
+	"net/http"
+
+	"github.com/juankair/docs_sign_be/pkg/log"
+	"github.com/juankair/docs_sign_be/pkg/response"
 	"github.com/uptrace/bunrouter"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
 )
 
 func RegisterHandler(router *bunrouter.Router, service Service, log log.Logger) {

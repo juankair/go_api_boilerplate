@@ -3,18 +3,19 @@ package main
 import (
 	"flag"
 	"fmt"
-	dbx "github.com/go-ozzo/ozzo-dbx"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/juankair/go_api_boilerplate/internal/account"
-	"github.com/juankair/go_api_boilerplate/internal/auth"
-	"github.com/juankair/go_api_boilerplate/internal/public"
-	"github.com/juankair/go_api_boilerplate/pkg/dbcontext"
 	"net/http"
 	"os"
 	"strconv"
 
-	"github.com/juankair/go_api_boilerplate/internal/config"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
+	dbx "github.com/go-ozzo/ozzo-dbx"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/juankair/docs_sign_be/internal/account"
+	"github.com/juankair/docs_sign_be/internal/auth"
+	"github.com/juankair/docs_sign_be/internal/public"
+	"github.com/juankair/docs_sign_be/pkg/dbcontext"
+
+	"github.com/juankair/docs_sign_be/internal/config"
+	"github.com/juankair/docs_sign_be/pkg/log"
 
 	"github.com/uptrace/bunrouter"
 )

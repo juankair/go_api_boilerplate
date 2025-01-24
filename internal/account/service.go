@@ -3,9 +3,10 @@ package account
 import (
 	"context"
 	"fmt"
-	"github.com/juankair/go_api_boilerplate/internal/entity"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
 	"time"
+
+	"github.com/juankair/docs_sign_be/internal/entity"
+	"github.com/juankair/docs_sign_be/pkg/log"
 )
 
 type Service interface {

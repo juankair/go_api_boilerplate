@@ -3,12 +3,13 @@ package account
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/juankair/go_api_boilerplate/internal/entity"
-	"github.com/juankair/go_api_boilerplate/pkg/log"
-	"github.com/juankair/go_api_boilerplate/pkg/pagination"
-	"github.com/juankair/go_api_boilerplate/pkg/response"
-	"github.com/uptrace/bunrouter"
 	"net/http"
+
+	"github.com/juankair/docs_sign_be/internal/entity"
+	"github.com/juankair/docs_sign_be/pkg/log"
+	"github.com/juankair/docs_sign_be/pkg/pagination"
+	"github.com/juankair/docs_sign_be/pkg/response"
+	"github.com/uptrace/bunrouter"
 )
 
 func RegisterHandler(router *bunrouter.Group, service Service, log log.Logger) {
