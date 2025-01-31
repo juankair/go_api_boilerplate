@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/juankair/docs_sign_be/internal/keperluan"
 	"net/http"
 	"os"
 	"strconv"
@@ -82,6 +83,10 @@ func buildHandler(logger log.Logger, db *dbcontext.DB, cfg *config.Config) http.
 			account.NewService(account.NewRepository(db, logger), logger),
 			logger,
 		)
+
+		keperluan.RegisterHandler(secure,
+			keperluan.NewService(keperluan.NewRepository(db, logger), logger),
+			logger)
 	})
 
 	handler := NewCORSHandler(router, cfg.HostFrontend)

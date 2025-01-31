@@ -107,7 +107,7 @@ func (s service) ActivationConfirmation(ctx context.Context, email string, passw
 func (s service) authenticate(ctx context.Context, email, password string) (entity.AccountMinimalData, error) {
 	account, err := s.Get(ctx, email)
 	if err != nil {
-		return entity.AccountMinimalData{}, errors.New("Akun tidak ditemukan 2")
+		return entity.AccountMinimalData{}, errors.New("Akun tidak ditemukan")
 	}
 
 	if account.Password == "" {

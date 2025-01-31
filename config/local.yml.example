@@ -1,0 +1,4 @@
+ServerPort: "8000"
+host_frontend : "http://localhost:3000"
+dsn: "username:password@tcp(localhost:3306)/db_name"
+jwt_signing_key: "random_32_char"
