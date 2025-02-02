@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/juankair/docs_sign_be/internal/keperluan"
 	"github.com/juankair/docs_sign_be/internal/pekerjaan"
+	"github.com/juankair/docs_sign_be/internal/testkit"
 	"net/http"
 	"os"
 	"strconv"
@@ -91,6 +92,10 @@ func buildHandler(logger log.Logger, db *dbcontext.DB, cfg *config.Config) http.
 
 		pekerjaan.RegisterHandler(secure,
 			pekerjaan.NewService(pekerjaan.NewRepository(db, logger), logger),
+			logger)
+
+		testkit.RegisterHandler(secure,
+			testkit.NewService(testkit.NewRepository(db, logger), logger),
 			logger)
 	})
 
