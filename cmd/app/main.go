@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/juankair/docs_sign_be/internal/keperluan"
+	"github.com/juankair/docs_sign_be/internal/pekerjaan"
 	"net/http"
 	"os"
 	"strconv"
@@ -86,6 +87,10 @@ func buildHandler(logger log.Logger, db *dbcontext.DB, cfg *config.Config) http.
 
 		keperluan.RegisterHandler(secure,
 			keperluan.NewService(keperluan.NewRepository(db, logger), logger),
+			logger)
+
+		pekerjaan.RegisterHandler(secure,
+			pekerjaan.NewService(pekerjaan.NewRepository(db, logger), logger),
 			logger)
 	})
 
